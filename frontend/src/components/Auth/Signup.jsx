@@ -1,16 +1,12 @@
 import { useContext } from "react";
-import { UserContext } from "../../context/UserContext";
+import { AuthContext } from "../../context/AuthContext";
 
-export default function PersonaSelect() {
-  const { setPersona } = useContext(UserContext);
+export default function Signup() {
+  const { login } = useContext(AuthContext);
 
   return (
-    <>
-      <button onClick={() => setPersona("Student")}>Student</button>
-      <button onClick={() => setPersona("Job Seeker")}>Job Seeker</button>
-      <button onClick={() => setPersona("Working Professional")}>
-        Working Professional
-      </button>
-    </>
+    <button onClick={() => login("newuser@email.com")}>
+      Signup
+    </button>
   );
 }
