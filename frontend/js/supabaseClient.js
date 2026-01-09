@@ -1,14 +1,10 @@
-// js/supabaseClient.js
+// DO NOT redeclare `supabase`
 
 const SUPABASE_URL = "https://bvfaxqyetripdntedhuq.supabase.co";
-const SUPABASE_ANON_KEY =
-  "sb_publishable_t8buKJZFe5lxeXTPh6kNCw_MCEtaJfW";
+const SUPABASE_ANON_KEY = "PASTE_YOUR_REAL_ANON_PUBLIC_KEY_HERE";
 
-// ✅ Create client and attach to window
-const supabaseClient = supabase.createClient(
+// create client using CDN global
+window.supabaseClient = window.supabase.createClient(
   SUPABASE_URL,
   SUPABASE_ANON_KEY
 );
-
-// ✅ expose globally
-window.supabase = supabaseClient;
