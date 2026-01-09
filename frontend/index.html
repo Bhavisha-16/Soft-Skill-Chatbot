@@ -1,35 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Soft Skills AI Chatbot</title>
-
+  <title>Login - Soft Skills AI</title>
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- Supabase CDN -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-  <!-- Project JS -->
   <script defer src="js/supabaseClient.js"></script>
   <script defer src="js/auth.js"></script>
-
-  <!-- Optional: avoid favicon error -->
-  <link rel="icon" href="data:,">
 </head>
 
 <body>
-  <h2>Login / Signup</h2>
+  <h2>Login</h2>
 
-  <input id="email" type="email" placeholder="Email" />
-  <br><br>
+  <input id="email" type="email" placeholder="Email"><br><br>
+  <input id="password" type="password" placeholder="Password"><br><br>
 
-  <input id="password" type="password" placeholder="Password" />
-  <br><br>
-
-  <button onclick="signup()">Signup</button>
   <button onclick="login()">Login</button>
+  <p><a href="#" onclick="forgotPassword()">Forgot Password?</a></p>
 
-  <!-- REQUIRED -->
+  <p>New user? <a href="signup.html">Create Account</a></p>
+
   <p id="message"></p>
 </body>
 </html>
