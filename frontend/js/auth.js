@@ -1,7 +1,14 @@
+// js/auth.js
+
 async function signup() {
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value.trim();
   const message = document.getElementById("message");
+
+  if (!email || !password) {
+    message.innerText = "Email and password are required";
+    return;
+  }
 
   const { error } = await window.supabaseClient.auth.signUp({
     email,
@@ -20,6 +27,11 @@ async function login() {
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value.trim();
   const message = document.getElementById("message");
+
+  if (!email || !password) {
+    message.innerText = "Email and password are required";
+    return;
+  }
 
   const { error } = await window.supabaseClient.auth.signInWithPassword({
     email,

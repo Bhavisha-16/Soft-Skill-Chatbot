@@ -1,26 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Soft Skills Chatbot - Login</title>
+  <meta charset="UTF-8" />
+  <title>Soft Skills AI Chatbot</title>
 
-  <!-- Supabase JS MUST load first -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Supabase CDN -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-  <!-- Your scripts AFTER -->
+  <!-- Project JS -->
   <script defer src="js/supabaseClient.js"></script>
   <script defer src="js/auth.js"></script>
 
-  <link rel="stylesheet" href="css/style.css">
+  <!-- Optional: avoid favicon error -->
+  <link rel="icon" href="data:,">
 </head>
+
 <body>
+  <h2>Login / Signup</h2>
 
-<h2>Login</h2>
+  <input id="email" type="email" placeholder="Email" />
+  <br><br>
 
-<input id="email" placeholder="Email">
-<input id="password" type="password" placeholder="Password">
+  <input id="password" type="password" placeholder="Password" />
+  <br><br>
 
-<button onclick="login()">Login</button>
-<button onclick="signup()">Signup</button>
+  <button onclick="signup()">Signup</button>
+  <button onclick="login()">Login</button>
 
+  <!-- REQUIRED -->
+  <p id="message"></p>
 </body>
 </html>

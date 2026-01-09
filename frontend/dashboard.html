@@ -1,46 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Dashboard</title>
+  <meta charset="UTF-8" />
+  <title>Dashboard - Soft Skills AI</title>
+
   <link rel="stylesheet" href="css/style.css">
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script defer src="js/supabaseClient.js"></script>
-  <script defer src="js/flow.js"></script>
-  <script defer src="js/quiz.js"></script>
-  <script defer src="js/chat.js"></script>
+  <script defer src="js/dashboard.js"></script>
+
+  <link rel="icon" href="data:,">
 </head>
+
 <body>
+  <h2 id="welcome"></h2>
 
-<h2>Soft Skills Training</h2>
+  <h3>Select Skill</h3>
+  <select id="skill">
+    <option value="">--Select--</option>
+    <option value="communication">Communication</option>
+    <option value="teamwork">Teamwork</option>
+    <option value="problem-solving">Problem Solving</option>
+  </select>
 
-<select id="persona">
-  <option>Student</option>
-  <option>Job Seeker</option>
-  <option>Working Professional</option>
-</select>
+  <h3>Select Level</h3>
+  <select id="level">
+    <option value="">--Select--</option>
+    <option value="beginner">Beginner</option>
+    <option value="intermediate">Intermediate</option>
+    <option value="advanced">Advanced</option>
+  </select>
 
-<select id="skill">
-  <option>Communication</option>
-  <option>Confidence</option>
-  <option>Interview</option>
-  <option>Teamwork</option>
-  <option>Leadership</option>
-</select>
+  <br><br>
+  <button onclick="startTraining()">Start Training</button>
 
-<select id="level">
-  <option>Beginner</option>
-  <option>Intermediate</option>
-  <option>Expert</option>
-</select>
-
-<button onclick="startTraining()">Start</button>
-
-<hr>
-
-<textarea id="userResponse" placeholder="Type your response..."></textarea>
-<button onclick="sendResponse()">Submit</button>
-
-<pre id="feedback"></pre>
-
+  <br><br>
+  <button onclick="logout()">Logout</button>
 </body>
 </html>
