@@ -18,26 +18,48 @@
 // 2️⃣ Update password
 async function updatePassword() {
   const pass = val("newPassword");
-  const confirm = val("confirmPassword");
+  const confirm = val("confirmNewPassword");
   const msg = message();
+  const button = document.getElementById("resetSubmit");
 
-  if (!pass || pass !== confirm) {
-    msg.innerText = "Passwords do not match";
+  msg.innerText = "";
+
+  if (!pass || !confirm) {
+    msg.innerText = "Please fill both password fields.";
     return;
   }
 
-  const { error } = await supabaseClient.auth.updateUser({
-    password: pass,
-  });
+  if (pass !== confirm) {
+    msg.innerText = "Passwords do not match.";
+    return;
+  }
 
-  msg.innerText = error
-    ? error.message
-    : "Password updated successfully. Redirecting to login...";
+  if (pass.length < 8) {
+    msg.innerText = "Password must be at least 8 characters.";
+    return;
+  }
 
-  if (!error) {
+  if (button) button.disabled = true;
+  msg.innerText = "Updating password...";
+
+  try {
+    const { error } = await supabaseClient.auth.updateUser({ password: pass });
+
+    if (error) {
+      msg.innerText = error.message;
+      if (button) button.disabled = false;
+      return;
+    }
+
+    msg.innerText = "Password updated successfully. Redirecting to login...";
     setTimeout(() => {
+      // Clear any local session and redirect to login
+      try { supabaseClient.auth.signOut(); } catch (e) {}
       window.location.href = "index.html";
-    }, 1500);
+    }, 1400);
+  } catch (err) {
+    msg.innerText = err.message || "Unexpected error";
+    if (button) button.disabled = false;
   }
 }
 
@@ -48,3 +70,9 @@ function val(id) {
 function message() {
   return document.getElementById("message");
 }
+
+// attach form handler
+document.getElementById("resetPasswordForm")?.addEventListener("submit", function (e) {
+  e.preventDefault();
+  updatePassword();
+});

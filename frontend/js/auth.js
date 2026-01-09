@@ -32,9 +32,8 @@ async function forgotPassword() {
     return;
   }
 
-  // ✅ SAFE, DYNAMIC REDIRECT
-  const redirectUrl =
-    `${window.APP_CONFIG.BASE_URL}/reset-password.html`;
+  // ✅ Resolve reset URL relative to the current page (works with Live Server)
+  const redirectUrl = new URL('reset-password.html', window.location.href).href;
 
   const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
     redirectTo: redirectUrl,
