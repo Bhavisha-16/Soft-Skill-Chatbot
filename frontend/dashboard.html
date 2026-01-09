@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script defer src="js/supabaseClient.js"></script>
+  <script defer src="js/flow.js"></script>
+  <script defer src="js/quiz.js"></script>
+  <script defer src="js/chat.js"></script>
+</head>
+<body>
+
+<h2>Soft Skills Training</h2>
+
+<select id="persona">
+  <option>Student</option>
+  <option>Job Seeker</option>
+  <option>Working Professional</option>
+</select>
+
+<select id="skill">
+  <option>Communication</option>
+  <option>Confidence</option>
+  <option>Interview</option>
+  <option>Teamwork</option>
+  <option>Leadership</option>
+</select>
+
+<select id="level">
+  <option>Beginner</option>
+  <option>Intermediate</option>
+  <option>Expert</option>
+</select>
+
+<button onclick="startTraining()">Start</button>
+
+<hr>
+
+<textarea id="userResponse" placeholder="Type your response..."></textarea>
+<button onclick="sendResponse()">Submit</button>
+
+<pre id="feedback"></pre>
+
+</body>
+</html>
