@@ -32,8 +32,9 @@ async function forgotPassword() {
     return;
   }
 
-  // ✅ DYNAMIC & SAFE REDIRECT (KEY FIX)
-  const redirectUrl = `${window.location.origin}/reset-password.html`;
+  // ✅ SAFE, DYNAMIC REDIRECT
+  const redirectUrl =
+    `${window.APP_CONFIG.BASE_URL}/reset-password.html`;
 
   const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
     redirectTo: redirectUrl,
@@ -44,7 +45,6 @@ async function forgotPassword() {
     : "Password reset link sent to your email.";
 }
 
-// ---------- Helpers ----------
 function getVal(id) {
   return document.getElementById(id)?.value.trim();
 }
