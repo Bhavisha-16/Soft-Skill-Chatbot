@@ -1,10 +1,8 @@
-// js/dashboard.js
-
 async function checkAuth() {
-  const { data } = await window.supabaseClient.auth.getUser();
+  const { data } = await supabaseClient.auth.getUser();
 
   if (!data.user) {
-    window.location.href = "index.html";
+    location.href = "index.html";
   } else {
     document.getElementById("welcome").innerText =
       "Welcome to Soft Skills AI Chatbot, " + data.user.email;
@@ -18,17 +16,17 @@ function startTraining() {
   const level = document.getElementById("level").value;
 
   if (!skill || !level) {
-    alert("Please select both skill and level");
+    alert("Select skill and level");
     return;
   }
 
   localStorage.setItem("skill", skill);
   localStorage.setItem("level", level);
 
-  alert("Training started for " + skill + " (" + level + ")");
+  location.href = "training.html";
 }
 
 async function logout() {
-  await window.supabaseClient.auth.signOut();
-  window.location.href = "index.html";
+  await supabaseClient.auth.signOut();
+  location.href = "index.html";
 }

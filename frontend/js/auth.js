@@ -1,49 +1,42 @@
-// js/auth.js
+async function login() {
+  const email = val("email");
+  const password = val("password");
+  const msg = message();
 
-async function signup() {
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value.trim();
-  const message = document.getElementById("message");
-
-  if (!email || !password) {
-    message.innerText = "Email and password are required";
-    return;
-  }
-
-  const { error } = await window.supabaseClient.auth.signUp({
+  const { error } = await supabaseClient.auth.signInWithPassword({
     email,
     password,
   });
 
   if (error) {
-    message.innerText = "Signup error: " + error.message;
+    msg.innerText = error.message;
   } else {
-    message.innerText =
-      "✅ Your account has been created on Soft Skills AI Chatbot. Please login to continue.";
+    msg.innerText = "Login successful! Redirecting...";
+    setTimeout(() => location.href = "dashboard.html", 1000);
   }
 }
 
-async function login() {
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value.trim();
-  const message = document.getElementById("message");
+async function forgotPassword() {
+  const email = val("email");
+  const msg = message();
 
-  if (!email || !password) {
-    message.innerText = "Email and password are required";
+  if (!email) {
+    msg.innerText = "Enter your email first";
     return;
   }
 
-  const { error } = await window.supabaseClient.auth.signInWithPassword({
-    email,
-    password,
+  const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
+    redirectTo: "http://127.0.0.1:5500/frontend/reset-password.html",
   });
 
-  if (error) {
-    message.innerText = "Login error: " + error.message;
-  } else {
-    message.innerText = "Login successful! Redirecting...";
-    setTimeout(() => {
-      window.location.href = "dashboard.html";
-    }, 1000);
-  }
+  msg.innerText = error
+    ? error.message
+    : "Password reset link sent to your email";
+}
+
+function val(id) {
+  return document.getElementById(id).value.trim();
+}
+function message() {
+  return document.getElementById("message");
 }

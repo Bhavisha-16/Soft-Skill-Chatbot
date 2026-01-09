@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Signup - Soft Skills AI</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="js/supabaseClient.js"></script>
+  <script defer src="js/signup.js"></script>
+</head>
+
+<body>
+  <h2>Create Account</h2>
+
+  <input id="firstName" placeholder="First Name"><br><br>
+  <input id="lastName" placeholder="Last Name"><br><br>
+  <input id="email" type="email" placeholder="Email"><br><br>
+  <input id="password" type="password" placeholder="Password"><br><br>
+  <input id="confirmPassword" type="password" placeholder="Confirm Password"><br><br>
+
+  <button onclick="signup()">Signup</button>
+
+  <p>Already have an account? <a href="index.html">Login</a></p>
+  <p id="message"></p>
+</body>
+</html>
