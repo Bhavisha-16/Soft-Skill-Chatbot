@@ -23,10 +23,16 @@ async function signup() {
       data: { first_name: first, last_name: last },
     },
   });
+  if (error) {
+    msg.innerText = error.message;
+    return;
+  }
 
-  msg.innerText = error
-    ? error.message
-    : "Account created successfully! Login now.";
+  // redirect to profile setup so user can choose skills and level
+  msg.innerText = 'Account created successfully. Redirecting to profile setup...';
+  setTimeout(() => {
+    window.location.href = 'profile-setup.html';
+  }, 900);
 }
 
 function val(id) {
