@@ -1,7 +1,12 @@
 async function login() {
-  const email = val("email");
-  const password = val("password");
-  const msg = message();
+  const email = getVal("email");
+  const password = getVal("password");
+  const msg = getMsg();
+
+  if (!email || !password) {
+    msg.innerText = "Email and password are required";
+    return;
+  }
 
   const { error } = await supabaseClient.auth.signInWithPassword({
     email,
@@ -12,31 +17,38 @@ async function login() {
     msg.innerText = error.message;
   } else {
     msg.innerText = "Login successful! Redirecting...";
-    setTimeout(() => location.href = "dashboard.html", 1000);
+    setTimeout(() => {
+      window.location.href = "dashboard.html";
+    }, 1000);
   }
 }
 
 async function forgotPassword() {
-  const email = val("email");
-  const msg = message();
+  const email = getVal("email");
+  const msg = getMsg();
 
   if (!email) {
-    msg.innerText = "Enter your email first";
+    msg.innerText = "Please enter your email";
     return;
   }
 
+  // ✅ DYNAMIC & SAFE REDIRECT (KEY FIX)
+  const redirectUrl = `${window.location.origin}/reset-password.html`;
+
   const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
-    redirectTo: "http://127.0.0.1:5500/frontend/reset-password.html",
+    redirectTo: redirectUrl,
   });
 
   msg.innerText = error
     ? error.message
-    : "Password reset link sent to your email";
+    : "Password reset link sent to your email.";
 }
 
-function val(id) {
-  return document.getElementById(id).value.trim();
+// ---------- Helpers ----------
+function getVal(id) {
+  return document.getElementById(id)?.value.trim();
 }
-function message() {
+
+function getMsg() {
   return document.getElementById("message");
 }

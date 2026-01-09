@@ -16,7 +16,11 @@ async function updatePassword() {
     ? error.message
     : "Password updated successfully! Login again.";
 
-  if (!error) setTimeout(() => location.href = "index.html", 1500);
+  if (!error) {
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 1500);
+  }
 }
 
 function val(id) {
