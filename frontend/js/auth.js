@@ -8,9 +8,12 @@ async function signup() {
     password,
   });
 
-  message.innerText = error
-    ? "Signup error: " + error.message
-    : "Signup successful! Now login.";
+  if (error) {
+    message.innerText = "Signup error: " + error.message;
+  } else {
+    message.innerText =
+      "✅ Your account has been created on Soft Skills AI Chatbot. Please login to continue.";
+  }
 }
 
 async function login() {
@@ -26,7 +29,7 @@ async function login() {
   if (error) {
     message.innerText = "Login error: " + error.message;
   } else {
-    message.innerText = "Login successful!";
+    message.innerText = "Login successful! Redirecting...";
     setTimeout(() => {
       window.location.href = "dashboard.html";
     }, 1000);
