@@ -1,17 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
   <title>Soft Skills Chatbot</title>
+
   <link rel="stylesheet" href="css/style.css">
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+  <!-- Supabase CDN (v2) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- Your JS files -->
   <script defer src="js/supabaseClient.js"></script>
   <script defer src="js/auth.js"></script>
 </head>
+
 <body>
-  <h2>Login</h2>
-  <input id="email" placeholder="Email">
-  <input id="password" type="password" placeholder="Password">
-  <button onclick="login()">Login</button>
+  <h2>Login / Signup</h2>
+
+  <input id="email" type="email" placeholder="Email" />
+  <br><br>
+  <input id="password" type="password" placeholder="Password" />
+  <br><br>
+
   <button onclick="signup()">Signup</button>
+  <button onclick="login()">Login</button>
+
+  <p id="message"></p>
 </body>
 </html>
