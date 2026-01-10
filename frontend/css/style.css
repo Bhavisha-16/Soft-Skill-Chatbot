@@ -1,16 +1,102 @@
 body {
-  font-family: Arial;
-  margin: 40px;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  background: #f7f9fb;
+  margin: 0;
+  padding: 0;
 }
 
+.navbar {
+  background: #fff;
+  box-shadow: 0 2px 8px #e0e0e0;
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  font-weight: bold;
+  color: #43b97f;
+  font-size: 1.3em;
+}
+.logout-btn {
+  background: #f44336;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: 500;
+}
+.logout-btn:hover {
+  background: #d32f2f;
+}
+.dashboard-main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 80vh;
+  padding-top: 40px;
+}
+.card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px #e0e0e0;
+  padding: 32px 40px;
+  margin: 24px 0;
+  min-width: 340px;
+  max-width: 400px;
+}
+.dashboard-card {
+  width: 100%;
+  max-width: 420px;
+}
+.profile-info {
+  margin-bottom: 18px;
+  color: #555;
+}
+label {
+  font-weight: 500;
+  margin-top: 12px;
+  display: block;
+}
 input, select, textarea {
   display: block;
-  margin: 10px 0;
-  width: 300px;
+  margin: 8px 0 18px 0;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  font-size: 1em;
+  background: #f9f9f9;
+  transition: border 0.2s;
 }
-
-button {
-  padding: 6px 12px;
+input:focus, select:focus, textarea:focus {
+  border: 1.5px solid #43b97f;
+  outline: none;
+}
+button, .primary-btn {
+  background: #43b97f;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.2s;
+}
+button:hover, .primary-btn:hover {
+  background: #369e6f;
+}
+.input-error {
+  border: 2px solid #e74c3c !important;
+  background: #fff0f0;
+}
+.small {
+  font-size: 0.95em;
+  color: #888;
+  margin-top: 10px;
 }
 
 /* Highlight input error */

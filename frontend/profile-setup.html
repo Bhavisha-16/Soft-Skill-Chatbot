@@ -12,14 +12,15 @@
   <h2>Choose your skills and training level</h2>
 
   <form id="profileForm" onsubmit="event.preventDefault(); saveProfile();">
-    <fieldset>
-      <legend>Soft Skills (select one or more)</legend>
-      <label><input type="checkbox" name="skill" value="Communication"> Communication</label><br>
-      <label><input type="checkbox" name="skill" value="Teamwork"> Teamwork</label><br>
-      <label><input type="checkbox" name="skill" value="Problem Solving"> Problem Solving</label><br>
-      <label><input type="checkbox" name="skill" value="Adaptability"> Adaptability</label><br>
-      <label><input type="checkbox" name="skill" value="Positive Attitude"> Positive Attitude</label><br>
-    </fieldset>
+    <label for="skill">Soft Skill:</label>
+    <select id="skill" name="skill" required>
+      <option value="">--Select--</option>
+      <option value="Communication">Communication</option>
+      <option value="Teamwork">Teamwork</option>
+      <option value="Problem Solving">Problem Solving</option>
+      <option value="Adaptability">Adaptability</option>
+      <option value="Positive Attitude">Positive Attitude</option>
+    </select>
 
     <label for="trainingLevel">Training level:</label>
     <select id="trainingLevel">
@@ -30,9 +31,11 @@
     </select>
     <br><br>
 
-    <label for="role">Role:</label>
-    <select id="role">
+    <label for="field">Field:</label>
+    <select id="field">
+      <option value="">--Select--</option>
       <option value="student">Student</option>
+      <option value="jobseeker">Job Seeker</option>
       <option value="employee">Employee</option>
       <option value="other">Other</option>
     </select>

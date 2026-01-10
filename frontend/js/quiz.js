@@ -14,8 +14,15 @@ async function validateQuiz() {
 
   if (!data.passed) {
     alert("Quiz failed. Redirected to lower level.");
-    selectedLevel = selectedLevel === "Expert" ? "Intermediate" : "Beginner";
+    // Optionally reset allowed levels
+    // selectedLevel = selectedLevel === "Expert" ? "Intermediate" : "Beginner";
   } else {
     alert("Quiz passed. Continue training.");
+    // Mark this level as passed
+    const passedLevels = JSON.parse(localStorage.getItem("passedLevels") || "[]");
+    if (!passedLevels.includes(selectedLevel)) {
+      passedLevels.push(selectedLevel);
+      localStorage.setItem("passedLevels", JSON.stringify(passedLevels));
+    }
   }
 }

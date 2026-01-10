@@ -10,28 +10,36 @@
 </head>
 
 <body>
-  <h2 id="welcome"></h2>
-
-  <h3>Select Skill</h3>
-  <select id="skill">
-    <option value="">--Select--</option>
-    <option value="communication">Communication</option>
-    <option value="teamwork">Teamwork</option>
-    <option value="problem-solving">Problem Solving</option>
-  </select>
-
-  <h3>Select Level</h3>
-  <select id="level">
-    <option value="">--Select--</option>
-    <option value="beginner">Beginner</option>
-    <option value="intermediate">Intermediate</option>
-    <option value="advanced">Advanced</option>
-    <option value="expert">Expert</option>
-  </select>
-
-  <br><br>
-  <button onclick="startTraining()">Start Training</button>
-  <br><br>
-  <button onclick="logout()">Logout</button>
+  <nav class="navbar">
+    <span class="logo">Soft Skills AI</span>
+    <span id="userEmail"></span>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </nav>
+  <main class="dashboard-main">
+    <div class="card dashboard-card">
+      <h2 id="welcome"></h2>
+      <div class="profile-info">
+        <div><b>Field:</b> <span id="userField"></span></div>
+      </div>
+      <label for="skill">Select Skill</label>
+      <select id="skill">
+        <option value="">--Select--</option>
+        <option value="Communication">Communication</option>
+        <option value="Teamwork">Teamwork</option>
+        <option value="Problem Solving">Problem Solving</option>
+        <option value="Adaptability">Adaptability</option>
+        <option value="Positive Attitude">Positive Attitude</option>
+      </select>
+      <label for="level">Select Level</label>
+      <select id="level">
+        <option value="">--Select--</option>
+        <option value="beginner">Beginner</option>
+        <option value="intermediate">Intermediate</option>
+        <option value="advanced">Advanced</option>
+        <option value="expert">Expert</option>
+      </select>
+      <button class="primary-btn" onclick="startTraining()">Start Training</button>
+    </div>
+  </main>
 </body>
 </html>

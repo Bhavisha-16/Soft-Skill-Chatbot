@@ -3,13 +3,17 @@ async function saveProfile() {
   const button = document.getElementById('profileSave');
   msg.innerText = '';
 
-  const checked = Array.from(document.querySelectorAll('input[name="skill"]:checked'))
-    .map((el) => el.value);
-  const level = document.getElementById('trainingLevel').value;
-  const role = document.getElementById('role').value;
 
-  if (checked.length === 0) {
-    msg.innerText = 'Please select at least one skill.';
+  const skill = document.getElementById('skill').value;
+  const level = document.getElementById('trainingLevel').value;
+  const field = document.getElementById('field').value;
+
+  if (!skill) {
+    msg.innerText = 'Please select a skill.';
+    return;
+  }
+  if (!field) {
+    msg.innerText = 'Please select your field.';
     return;
   }
 
@@ -20,9 +24,9 @@ async function saveProfile() {
     // store as JSON in user metadata
     const { error } = await supabaseClient.auth.updateUser({
       data: {
-        skills: JSON.stringify(checked),
+        skill,
         training_level: level,
-        role,
+        field,
       },
     });
 
