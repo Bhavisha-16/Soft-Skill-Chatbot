@@ -10,31 +10,61 @@
 </head>
 <body>
   <h2>Sign Up</h2>
-  <form id="signupForm" onsubmit="event.preventDefault(); signup();">
-    <div class="card">
-      <h2>Create your account</h2>
-      <label for="firstName">First name</label>
-      <input type="text" id="firstName" required>
-      <label for="lastName">Last name</label>
-      <input type="text" id="lastName" required>
-      <label for="email">Email</label>
-      <input type="email" id="email" required>
-      <label for="field">I am a</label>
-      <select id="field" required>
-        <option value="">--Select--</option>
-        <option value="student">Student</option>
-        <option value="jobseeker">Job Seeker</option>
-        <option value="employee">Employee</option>
-        <option value="other">Other</option>
-      </select>
-      <label for="password">Password</label>
-      <input type="password" id="password" required>
-      <label for="confirmPassword">Confirm Password</label>
-      <input type="password" id="confirmPassword" required>
-      <button id="signupSubmit" type="submit">Sign Up</button>
-      <div id="message" aria-live="polite"></div>
-      <p class="small"><a href="forgot-password.html">Forgot Password?</a></p>
-    </div>
-  </form>
+  <div class="auth-bg">
+    <main class="centered-main">
+      <form id="signupForm" class="card signup-card" onsubmit="event.preventDefault(); signup();">
+        <h2>Signup</h2>
+        <div class="input-group">
+          <input type="text" id="firstName" placeholder="First name" required>
+        </div>
+        <div class="input-group">
+          <input type="text" id="lastName" placeholder="Last name" required>
+        </div>
+        <div class="input-group">
+          <input type="email" id="email" placeholder="Email" required>
+        </div>
+        <div class="input-group">
+          <select id="field" required>
+            <option value="">I am a...</option>
+            <option value="student">Student</option>
+            <option value="jobseeker">Job Seeker</option>
+            <option value="employee">Employee</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="input-group password-group">
+          <input type="password" id="password" placeholder="Create password" required>
+          <button type="button" class="toggle-password" tabindex="-1" onclick="togglePassword('password', this)">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="12" rx="9" ry="5.5"/><circle cx="12" cy="12" r="2.5"/></svg>
+          </button>
+        </div>
+        <div class="input-group password-group">
+          <input type="password" id="confirmPassword" placeholder="Confirm password" required>
+          <button type="button" class="toggle-password" tabindex="-1" onclick="togglePassword('confirmPassword', this)">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="12" rx="9" ry="5.5"/><circle cx="12" cy="12" r="2.5"/></svg>
+          </button>
+        </div>
+        <button id="signupSubmit" type="submit" class="primary-btn login-btn">Signup</button>
+        <div id="message" aria-live="polite"></div>
+        <div class="auth-links">Already have an account? <a href="index.html">Login</a></div>
+        <div class="divider"><span>Or</span></div>
+        <button type="button" class="social-btn fb-btn" disabled><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" class="icon"> Login with Facebook</button>
+        <button type="button" class="social-btn google-btn" disabled><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/google.svg" class="icon"> Login with Google</button>
+        <div class="small"><a href="forgot-password.html">Forgot Password?</a></div>
+      </form>
+    </main>
+  </div>
+  <script>
+    function togglePassword(id, el) {
+      const input = document.getElementById(id);
+      if (input.type === 'password') {
+        input.type = 'text';
+        el.innerHTML = '&#128064;';
+      } else {
+        input.type = 'password';
+        el.innerHTML = '&#128065;';
+      }
+    }
+  </script>
 </body>
 </html>
