@@ -12,3 +12,10 @@ input, select, textarea {
 button {
   padding: 6px 12px;
 }
+
+/* Highlight input error */
+.input-error {
+  border: 2px solid #e74c3c !important;
+  background: #fff0f0;
+}
+}

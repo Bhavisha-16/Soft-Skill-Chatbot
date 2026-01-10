@@ -21,21 +21,55 @@ async function updatePassword() {
   const confirm = val("confirmNewPassword");
   const msg = message();
   const button = document.getElementById("resetSubmit");
+  const passInput = document.getElementById("newPassword");
+  const confirmInput = document.getElementById("confirmNewPassword");
 
   msg.innerText = "";
+  if (passInput) passInput.classList.remove("input-error");
+  if (confirmInput) confirmInput.classList.remove("input-error");
+
+  // Password requirements
+  const requirements = [
+    { re: /.{8,}/, msg: "at least 8 characters" },
+    { re: /[A-Z]/, msg: "an uppercase letter" },
+    { re: /[a-z]/, msg: "a lowercase letter" },
+    { re: /[0-9]/, msg: "a number" },
+    { re: /[^A-Za-z0-9]/, msg: "a special character (e.g. @, #, $)" },
+  ];
 
   if (!pass || !confirm) {
     msg.innerText = "Please fill both password fields.";
+    if (!pass && passInput) passInput.classList.add("input-error");
+    if (!confirm && confirmInput) confirmInput.classList.add("input-error");
+    setTimeout(() => {
+      msg.innerText = "";
+      if (passInput) passInput.classList.remove("input-error");
+      if (confirmInput) confirmInput.classList.remove("input-error");
+    }, 2000);
     return;
   }
 
   if (pass !== confirm) {
     msg.innerText = "Passwords do not match.";
+    if (passInput) passInput.classList.add("input-error");
+    if (confirmInput) confirmInput.classList.add("input-error");
+    setTimeout(() => {
+      msg.innerText = "";
+      if (passInput) passInput.classList.remove("input-error");
+      if (confirmInput) confirmInput.classList.remove("input-error");
+    }, 2000);
     return;
   }
 
-  if (pass.length < 8) {
-    msg.innerText = "Password must be at least 8 characters.";
+  // Check requirements
+  const failed = requirements.filter(r => !r.re.test(pass));
+  if (failed.length > 0) {
+    msg.innerText = "Password must contain: " + failed.map(r => r.msg).join(", ") + ".";
+    if (passInput) passInput.classList.add("input-error");
+    setTimeout(() => {
+      msg.innerText = "";
+      if (passInput) passInput.classList.remove("input-error");
+    }, 3000);
     return;
   }
 
@@ -48,18 +82,19 @@ async function updatePassword() {
     if (error) {
       msg.innerText = error.message;
       if (button) button.disabled = false;
+      setTimeout(() => { msg.innerText = ""; }, 2500);
       return;
     }
 
     msg.innerText = "Password updated successfully. Redirecting to login...";
     setTimeout(() => {
-      // Clear any local session and redirect to login
       try { supabaseClient.auth.signOut(); } catch (e) {}
       window.location.href = "index.html";
-    }, 1400);
+    }, 1200);
   } catch (err) {
     msg.innerText = err.message || "Unexpected error";
     if (button) button.disabled = false;
+    setTimeout(() => { msg.innerText = ""; }, 2500);
   }
 }
 

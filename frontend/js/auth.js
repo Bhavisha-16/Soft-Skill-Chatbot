@@ -2,9 +2,12 @@ async function login() {
   const email = getVal("email");
   const password = getVal("password");
   const msg = getMsg();
+  const passInput = document.getElementById("password");
 
   if (!email || !password) {
     msg.innerText = "Email and password are required";
+    if (passInput) passInput.classList.remove("input-error");
+    setTimeout(() => { msg.innerText = ""; }, 1800);
     return;
   }
 
@@ -14,9 +17,15 @@ async function login() {
   });
 
   if (error) {
-    msg.innerText = error.message;
+    msg.innerText = "Incorrect password. Please try again.";
+    if (passInput) passInput.classList.add("input-error");
+    setTimeout(() => {
+      msg.innerText = "";
+      if (passInput) passInput.classList.remove("input-error");
+    }, 2000);
   } else {
     msg.innerText = "Login successful! Redirecting...";
+    if (passInput) passInput.classList.remove("input-error");
     setTimeout(() => {
       window.location.href = "dashboard.html";
     }, 1000);
