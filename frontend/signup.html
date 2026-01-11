@@ -9,7 +9,7 @@
   <script defer src="js/signup.js"></script>
 </head>
 <body>
-  <h2>Sign Up</h2>
+  <!-- Removed duplicate Sign Up heading for cleaner layout -->
   <div class="auth-bg">
     <main class="centered-main">
       <form id="signupForm" class="card signup-card" onsubmit="event.preventDefault(); signup();">
@@ -34,15 +34,9 @@
         </div>
         <div class="input-group password-group">
           <input type="password" id="password" placeholder="Create password" required>
-          <button type="button" class="toggle-password" tabindex="-1" onclick="togglePassword('password', this)">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="12" rx="9" ry="5.5"/><circle cx="12" cy="12" r="2.5"/></svg>
-          </button>
         </div>
         <div class="input-group password-group">
           <input type="password" id="confirmPassword" placeholder="Confirm password" required>
-          <button type="button" class="toggle-password" tabindex="-1" onclick="togglePassword('confirmPassword', this)">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="12" rx="9" ry="5.5"/><circle cx="12" cy="12" r="2.5"/></svg>
-          </button>
         </div>
         <button id="signupSubmit" type="submit" class="primary-btn login-btn">Signup</button>
         <div id="message" aria-live="polite"></div>
