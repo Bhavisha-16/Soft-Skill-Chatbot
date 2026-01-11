@@ -16,7 +16,7 @@
   </nav>
   <main class="dashboard-main">
     <div class="card dashboard-card">
-      <h2 id="welcome"></h2>
+        <h2>Welcome, <span id="user-email"></span>!</h2>
       <div class="profile-info">
         <div><b>Field:</b> <span id="userField"></span></div>
       </div>
@@ -35,9 +35,34 @@
         <option value="beginner">Beginner</option>
         <option value="intermediate">Intermediate</option>
         <option value="advanced">Advanced</option>
-        <option value="expert">Expert</option>
       </select>
       <button class="primary-btn" onclick="startTraining()">Start Training</button>
+    </div>
+    </div>
+    <div class="centered-bg">
+      <div class="card dashboard-card">
+        <h2>Welcome, <span id="user-email"></span>!</h2>
+        <div class="dashboard-actions">
+          <label for="skill">Select Skill</label>
+          <select id="skill">
+            <option value="">--Select--</option>
+            <option value="Communication">Communication</option>
+            <option value="Teamwork">Teamwork</option>
+            <option value="Problem Solving">Problem Solving</option>
+            <option value="Adaptability">Adaptability</option>
+            <option value="Positive Attitude">Positive Attitude</option>
+          </select>
+          <label for="level">Select Level</label>
+          <select id="level">
+            <option value="">--Select--</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+          <button class="primary-btn" onclick="startTraining()">Start Training</button>
+        </div>
+        <button class="secondary-btn" onclick="logout()">Logout</button>
+      </div>
     </div>
   </main>
 </body>

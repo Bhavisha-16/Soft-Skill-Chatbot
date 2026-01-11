@@ -1,3 +1,18 @@
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  cursor: pointer;
+  outline: none;
+  z-index: 2;
+}
 .toggle-password svg {
   display: block;
   width: 22px;
@@ -5,16 +20,11 @@
   stroke: #888;
   background: none;
   border: none;
-  padding: 0;
-  margin: 0;
+  pointer-events: none;
 }
-.toggle-password {
-  background: none !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  line-height: 1;
+.toggle-password:focus {
+  outline: none;
+  box-shadow: none;
 }
 /* Auth background and card styles for login/signup */
 .auth-bg {
